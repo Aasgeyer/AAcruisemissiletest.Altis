@@ -1,0 +1,804 @@
+/*%FSM<COMPILE "D:\Programme HDD\Steam HDD\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, cruiseLiveFeed_v2">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-75.000000,-600.000000,25.000000,-550.000000,0.000000,"Start"};
+item1[] = {"_",8,218,-75.000000,-475.000000,25.000000,-425.000000,0.000000,""};
+item2[] = {"all",2,250,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"all"};
+item3[] = {"_",8,218,-75.000000,1700.000000,25.000000,1750.000000,1.000000,""};
+item4[] = {"end",1,250,-75.000000,1850.000000,25.000000,1900.000000,0.000000,"end"};
+item5[] = {"_",8,218,-75.000000,550.000000,25.000000,600.000000,0.000000,""};
+item6[] = {"update",2,250,75.000000,900.000000,175.000000,950.000000,0.000000,"update"};
+item7[] = {"slept",4,218,225.000000,850.000000,325.000000,900.000000,0.000000,"slept"};
+item8[] = {"__",2,250,375.000000,900.000000,475.000000,950.000000,0.000000,"/"};
+item9[] = {"__IsServer",4,218,100.000000,-600.000000,200.000000,-550.000000,1.000000,"!IsServer"};
+item10[] = {"terminate",1,250,275.000000,-600.000000,375.000000,-550.000000,0.000000,"terminate"};
+item11[] = {"_",8,218,225.000000,950.000000,325.000000,1000.000000,0.000000,""};
+item12[] = {"no_missile_targe",4,218,225.000000,1175.000000,325.000000,1225.000000,0.000000,"no missile target"};
+item13[] = {"missile_null_fee",4,218,75.000000,1425.000000,175.000000,1475.000000,1.000000,"missile null" \n "feed"};
+item14[] = {"reset_feed",3,250,75.000000,1550.000000,175.000000,1600.000000,0.000000,"reset feed"};
+item15[] = {"no_feed",3,250,-225.000000,1550.000000,-125.000000,1600.000000,0.000000,"no feed"};
+item16[] = {"missile_null",4,218,-225.000000,1425.000000,-125.000000,1475.000000,0.000000,"missile null"};
+item17[] = {"destroy_missile",3,250,225.000000,1300.000000,325.000000,1350.000000,0.000000,"destroy missile"};
+item18[] = {"_",8,218,-75.000000,25.000000,25.000000,75.000000,0.000000,""};
+item19[] = {"check_object_tex",2,250,-75.000000,150.000000,25.000000,200.000000,0.000000,"check" \n "object textures"};
+item20[] = {"use",2,250,-75.000000,425.000000,25.000000,475.000000,0.000000,"use"};
+item21[] = {"isNull_screen",4,218,100.000000,150.000000,200.000000,200.000000,1.000000,"isNull screen"};
+item22[] = {"__1",2,250,-375.000000,150.000000,-275.000000,200.000000,0.000000,"+1"};
+item23[] = {"_",8,218,-225.000000,225.000000,-125.000000,275.000000,0.000000,""};
+item24[] = {"no_perlin",4,218,-225.000000,50.000000,-125.000000,100.000000,0.000000,"no perlin"};
+item25[] = {"perlin",4,218,-75.000000,300.000000,25.000000,350.000000,2.000000,"perlin"};
+item26[] = {"___1",2,250,-75.000000,-350.000000,25.000000,-300.000000,0.000000,"/"};
+item27[] = {"_",8,218,-75.000000,-225.000000,25.000000,-175.000000,0.000000,""};
+item28[] = {"init",4,218,-250.000000,-350.000000,-150.000000,-300.000000,1.000000,"init"};
+item29[] = {"add_EH",1,250,-425.000000,-350.000000,-325.000000,-300.000000,0.000000,"add EH"};
+item30[] = {"update_1",2,250,-225.000000,900.000000,-125.000000,950.000000,0.000000,"update"};
+item31[] = {"slept",4,218,-375.000000,850.000000,-275.000000,900.000000,0.000000,"slept"};
+item32[] = {"___2",2,250,-525.000000,900.000000,-425.000000,950.000000,0.000000,"/"};
+item33[] = {"_",8,218,-375.000000,950.000000,-275.000000,1000.000000,0.000000,""};
+item34[] = {"___3",2,250,-75.000000,675.000000,25.000000,725.000000,0.000000,"/"};
+item35[] = {"target",4,218,25.000000,775.000000,125.000000,825.000000,0.000000," target"};
+item36[] = {"no_target",4,218,-175.000000,775.000000,-75.000000,825.000000,0.000000,"no target"};
+item37[] = {"",7,210,146.000000,696.000000,154.000000,703.999939,0.000000,""};
+item38[] = {"projectilve_faaar",4,218,-375.000000,1175.000000,-275.000000,1225.000000,0.000000,"projectilve" \n "faaar away"};
+item39[] = {"destroy_projecti",3,250,-375.000000,1300.000000,-275.000000,1350.000000,0.000000,"destroy projectile"};
+item40[] = {"",7,210,-179.000000,1071.000000,-171.000000,1079.000000,0.000000,""};
+item41[] = {"",7,210,421.000000,1071.000000,429.000000,1079.000000,0.000000,""};
+item42[] = {"",7,210,-478.999969,1071.000000,-471.000031,1078.999878,0.000000,""};
+item43[] = {"",7,210,121.000000,1071.000000,129.000000,1079.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {0,9};
+link2[] = {1,26};
+link3[] = {2,18};
+link4[] = {3,4};
+link5[] = {5,34};
+link6[] = {6,7};
+link7[] = {6,43};
+link8[] = {7,8};
+link9[] = {8,11};
+link10[] = {8,41};
+link11[] = {9,10};
+link12[] = {11,6};
+link13[] = {12,17};
+link14[] = {13,14};
+link15[] = {14,3};
+link16[] = {15,3};
+link17[] = {16,15};
+link18[] = {17,13};
+link19[] = {17,16};
+link20[] = {18,19};
+link21[] = {19,21};
+link22[] = {19,24};
+link23[] = {19,25};
+link24[] = {20,5};
+link25[] = {21,37};
+link26[] = {22,23};
+link27[] = {23,19};
+link28[] = {24,22};
+link29[] = {25,20};
+link30[] = {26,27};
+link31[] = {26,28};
+link32[] = {27,2};
+link33[] = {28,29};
+link34[] = {30,31};
+link35[] = {30,40};
+link36[] = {31,32};
+link37[] = {32,33};
+link38[] = {32,42};
+link39[] = {33,30};
+link40[] = {34,35};
+link41[] = {34,36};
+link42[] = {35,6};
+link43[] = {36,30};
+link44[] = {37,34};
+link45[] = {38,39};
+link46[] = {39,13};
+link47[] = {39,16};
+link48[] = {40,13};
+link49[] = {40,16};
+link50[] = {40,38};
+link51[] = {41,43};
+link52[] = {42,40};
+link53[] = {43,12};
+link54[] = {43,13};
+link55[] = {43,16};
+globals[] = {0.000000,0,0,0,0,640,480,1,138,6316128,1,-689.061951,687.293030,1229.887695,120.774109,1097,884,1};
+window[] = {2,-1,-1,-1,-1,915,156,1596,156,3,1115};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "cruiseLiveFeed_v2";
+        class States
+        {
+                /*%FSM<STATE "Start">*/
+                class Start
+                {
+                        name = "Start";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"params [" \n
+                         "	[""_unit"",objNull,[objNull]]," \n
+                         "	[""_weapon"","""",[""""]]," \n
+                         "	[""_muzzle"","""",[""""]]," \n
+                         "	[""_mode"","""",[""""]]," \n
+                         "	[""_ammo"","""",[""""]]," \n
+                         "	[""_magazine"","""",[""""]]," \n
+                         "	[""_missile"",objNull,[objNull]]," \n
+                         "	[""_gunner"",objNull,[objNull]]" \n
+                         "];" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "__IsServer">*/
+                                class __IsServer
+                                {
+                                        itemno = 9;
+                                        priority = 1.000000;
+                                        to="terminate";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!IsServer"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="___1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "all">*/
+                class all
+                {
+                        name = "all";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"_screenIndex = 1;" \n
+                         "" \n
+                         "_startTime = time;" \n
+                         "_mrk_cruise = createMarker [format [""mrk_cruise_%1"",random 1000], getpos _missile];" \n
+                         "_mrk_cruise setmarkerTypeLocal ""mil_triangle"";" \n
+                         "_mrk_cruise setmarkerColorLocal ""ColorOrange"";" \n
+                         "_mrk_cruise setmarkerTextLocal format [""t+ %1"",round(_startTime)];" \n
+                         "_mrk_cruise setmarkerSize [0.25,0.5];" \n
+                         "_mrk_cruise setMarkerDir getdir _missile;" \n
+                         "" \n
+                         "_txt = format [""%1 Firing!"", [configFile >> ""CfgVehicles"" >> typeOf _unit] call BIS_fnc_displayName];" \n
+                         "player sidechat _txt;" \n
+                         "" \n
+                         "if (typeOf _unit in [""B_Ship_MRLS_01_F""]) then {" \n
+                         "	_unit spawn {" \n
+                         "		for ""_i"" from 1 to 3 do {" \n
+                         "			playSound3D [""A3\Sounds_F\sfx\alarm.wss"", _this, false, getposASL _this, 3, 0.75,500];" \n
+                         "			sleep 1.5;" \n
+                         "		};" \n
+                         "	};" \n
+                         "};" \n
+                         "" \n
+                         "_radius = sqrt 2 / 2 * worldSize;" \n
+                         "" \n
+                         "_missileT = missileTarget _missile;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="check_object_tex";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "end">*/
+                class end
+                {
+                        name = "end";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"player sidechat format [""Impact at grid %1."", mapGridPosition markerpos _mrk_cruise];" \n
+                         "deleteVehicle _camT;" \n
+                         "deletemarker _mrk_cruise;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "update">*/
+                class update
+                {
+                        name = "update";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_t = time;" \n
+                         "_mrk_cruise setmarkerposLocal getpos _missile;" \n
+                         "_t_p = round(time-_startTime);" \n
+                         "_ASL = round((getposASL _missile select 2));" \n
+                         "_s = _missile distance missileTarget _missile;" \n
+                         "_v = (speed _missile)/3.6;" \n
+                         "_t_m = round(_s/_v);" \n
+                         "_grid = mapgridposition missileTarget _missile;" \n
+                         "_mrk_cruise setmarkerTextLocal format [""grid %1 | t+ %2 | t- %3 | ASL %4"", _grid, _t_p, _t_m, _ASL];" \n
+                         "_mrk_cruise setmarkerDir getdir _missile;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="reset_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _selectionIndex != -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_missile_targe">*/
+                                class no_missile_targe
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="destroy_missile";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull missileTarget _missile && time > _startTime+10"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="no_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "slept">*/
+                                class slept
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_t+0.25 <= time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__">*/
+                class __
+                {
+                        name = "__";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="reset_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _selectionIndex != -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_missile_targe">*/
+                                class no_missile_targe
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="destroy_missile";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull missileTarget _missile && time > _startTime+10"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="no_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="update";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "terminate">*/
+                class terminate
+                {
+                        name = "terminate";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reset_feed">*/
+                class reset_feed
+                {
+                        name = "reset_feed";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"_cam cameraEffect [""terminate"", ""back"", _rtt];" \n
+                         "camDestroy _cam;" \n
+                         "_screen setObjectTexture [_selectionIndex, ""#(ai,512,512,9)perlinNoise(256,256,0,1)""];" \n
+                         "{_screen removeAction _x;} foreach [_addIdTI,_addIdDay];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "no_feed">*/
+                class no_feed
+                {
+                        name = "no_feed";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "destroy_missile">*/
+                class destroy_missile
+                {
+                        name = "destroy_missile";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/"deleteVehicle _missile;" \n
+                         "_t = time+999;" \n
+                         "player sidechat ""Missile self destruct, no target aquisition"";" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="reset_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _selectionIndex != -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="no_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "check_object_tex">*/
+                class check_object_tex
+                {
+                        name = "check_object_tex";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"_screen = missionNamespace getvariable [format [""AAS_rttScreen_%1"",_screenIndex],objNull];" \n
+                         "_textures = getObjectTextures _screen;" \n
+                         "_selectionIndex = _textures findIf {_x find ""perlin"" != -1};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "perlin">*/
+                                class perlin
+                                {
+                                        itemno = 25;
+                                        priority = 2.000000;
+                                        to="use";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_selectionIndex != -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "isNull_screen">*/
+                                class isNull_screen
+                                {
+                                        itemno = 21;
+                                        priority = 1.000000;
+                                        to="___3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"IsNull (missionNamespace getvariable [format [""AAS_rttScreen_%1"",_screenIndex],objNull])"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_perlin">*/
+                                class no_perlin
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_selectionIndex == -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "use">*/
+                class use
+                {
+                        name = "use";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/"// create rtt on screen" \n
+                         "_rtt = format [""cruisertt_%1_%2"",_screenIndex,_selectionIndex];" \n
+                         "_screen setObjectTexture [_selectionIndex, format [""#(argb,512,512,1)r2t(%1,1.33)"",_rtt]];" \n
+                         "/* create camera and stream to render surface */" \n
+                         "_cam = ""camera"" camCreate [0,0,0];" \n
+                         "_cam cameraEffect [""Internal"", ""Back"", _rtt];" \n
+                         "/* attach cam to gunner cam position */" \n
+                         "_cam attachTo [_missile, [0,4,0.0]];" \n
+                         "// cam target" \n
+                         "_camT = createVehicle [""Sign_Sphere10cm_F"",[0,0,0],[],0,""CAN_COLLIDE""];" \n
+                         "_camT hideObject true;" \n
+                         "_camT attachTo [_missile,[0,6,0]];" \n
+                         "_cam camPrepareTarget _camT;" \n
+                         "_cam camCommitPrepared 0;" \n
+                         "_rtt setPiPEffect [2];//[3,1,1,0.4,0,[0,0,0,0],[1,1,1,0],[1,1,1,1]];//[2];" \n
+                         "" \n
+                         "_addTxt = format [""<t color='#8000FF00'>Screen %1 TI</t>"",_selectionIndex];" \n
+                         "_addIdTI = _screen addAction [" \n
+                         "	_addTxt," \n
+                         "	format [""%1 setPiPEffect [2];"", str _rtt]," \n
+                         "	[], 100-_screenIndex, false, false, """", ""true"", 8" \n
+                         "];" \n
+                         "_addTxt = format [""<t color='#8000FF00'>Screen %1 Day</t>"",_selectionIndex];" \n
+                         "_addIdDay = _screen addAction [" \n
+                         "	_addTxt," \n
+                         "	format [""%1 setPiPEffect [3,1,1,0.4,0,[0,0,0,0],[1,1,1,0],[1,1,1,1]];"", str _rtt]," \n
+                         "	[], 100-_screenIndex, false, false, """", ""true"", 8" \n
+                         "];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="___3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"_screenIndex = _screenIndex+1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="check_object_tex";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___1">*/
+                class ___1
+                {
+                        name = "___1";
+                        itemno = 26;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "init">*/
+                                class init
+                                {
+                                        itemno = 28;
+                                        priority = 1.000000;
+                                        to="add_EH";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"tolower _weapon isequalto ""init"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="all";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "add_EH">*/
+                class add_EH
+                {
+                        name = "add_EH";
+                        itemno = 29;
+                        init = /*%FSM<STATEINIT""">*/"_unit addEventHandler [""Fired"", { " \n
+                         "  _this call AAS_fnc_livefeed2;         " \n
+                         "}];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "update_1">*/
+                class update_1
+                {
+                        name = "update_1";
+                        itemno = 30;
+                        init = /*%FSM<STATEINIT""">*/"_t = time;" \n
+                         "_mrk_cruise setmarkerposLocal getpos _missile;" \n
+                         "_t_p = round(time-_startTime);" \n
+                         "_ASL = round((getposASL _missile select 2));" \n
+                         "_mrk_cruise setmarkerTextLocal format [""t+ %1 | ASL %2"", _t_p, _ASL];" \n
+                         "_mrk_cruise setmarkerDir getdir _missile;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="reset_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _selectionIndex != -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="no_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "projectilve_faaar">*/
+                                class projectilve_faaar
+                                {
+                                        itemno = 38;
+                                        priority = 0.000000;
+                                        to="destroy_projecti";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_missile distance2d _unit > _radius && time > _startTime+10"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "slept">*/
+                                class slept
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="___2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_t+0.25 <= time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___2">*/
+                class ___2
+                {
+                        name = "___2";
+                        itemno = 32;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="reset_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _selectionIndex != -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="no_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "projectilve_faaar">*/
+                                class projectilve_faaar
+                                {
+                                        itemno = 38;
+                                        priority = 0.000000;
+                                        to="destroy_projecti";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_missile distance2d _unit > _radius && time > _startTime+10"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="update_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___3">*/
+                class ___3
+                {
+                        name = "___3";
+                        itemno = 34;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "no_target">*/
+                                class no_target
+                                {
+                                        itemno = 36;
+                                        priority = 0.000000;
+                                        to="update_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"IsNull _missileT"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "target">*/
+                                class target
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="update";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!IsNull _missileT"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "destroy_projecti">*/
+                class destroy_projecti
+                {
+                        name = "destroy_projecti";
+                        itemno = 39;
+                        init = /*%FSM<STATEINIT""">*/"deleteVehicle _missile;" \n
+                         "_t = time+999;" \n
+                         "player sidechat ""Projectile self destruct."";" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="reset_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _selectionIndex != -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="no_feed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Start";
+        finalStates[] =
+        {
+                "end",
+                "terminate",
+                "add_EH",
+        };
+};
+/*%FSM</COMPILE>*/

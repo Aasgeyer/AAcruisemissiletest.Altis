@@ -1,0 +1,255 @@
+/*%FSM<COMPILE "D:\Programme HDD\Steam HDD\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, MissionFlow_cruise">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-75.000000,-375.000000,25.000000,-325.000000,0.000000,"Start"};
+item1[] = {"_",8,218,-75.000000,-250.000000,25.000000,-200.000000,0.000000,""};
+item2[] = {"get_all_targets",2,250,-75.000000,-125.000000,25.000000,-75.000000,0.000000,"get all targets"};
+item3[] = {"end",4,218,-75.000000,50.000000,25.000000,100.000000,0.000000,"end"};
+item4[] = {"chat",3,250,-75.000000,200.000000,25.000000,250.000000,0.000000,"chat"};
+item5[] = {"__IsServer",4,218,100.000000,-375.000000,200.000000,-325.000000,1.000000,"!IsServer"};
+item6[] = {"terminate",1,250,275.000000,-375.000000,375.000000,-325.000000,0.000000,"terminate"};
+item7[] = {"chatted",4,218,-75.000000,325.000000,25.000000,375.000000,0.000000,"chatted"};
+item8[] = {"jets_fly",3,250,-75.000000,450.000000,25.000000,500.000000,0.000000,"jets fly"};
+item9[] = {"jets_passed",4,218,-75.000000,575.000000,25.000000,625.000000,0.000000,"jets passed"};
+item10[] = {"end",1,250,-75.000000,700.000000,25.000000,750.000000,0.000000,"end"};
+link0[] = {0,1};
+link1[] = {0,5};
+link2[] = {1,2};
+link3[] = {2,3};
+link4[] = {3,4};
+link5[] = {4,7};
+link6[] = {5,6};
+link7[] = {7,8};
+link8[] = {8,9};
+link9[] = {9,10};
+globals[] = {0.000000,0,0,0,0,640,480,1,35,6316128,1,-725.042297,852.443604,898.103882,-373.088104,1097,884,1};
+window[] = {2,-1,-1,-1,-1,811,52,1492,52,3,1115};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "MissionFlow_cruise";
+        class States
+        {
+                /*%FSM<STATE "Start">*/
+                class Start
+                {
+                        name = "Start";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "__IsServer">*/
+                                class __IsServer
+                                {
+                                        itemno = 5;
+                                        priority = 1.000000;
+                                        to="terminate";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!IsServer"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="get_all_targets";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "get_all_targets">*/
+                class get_all_targets
+                {
+                        name = "get_all_targets";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"_initialEnemyCount = (east countSide allUnits) + (independent countSide allUnits);" \n
+                         "AAS_enemyC = _initialEnemyCount;" \n
+                         "" \n
+                         "_prio1Mrks = [""marker_prio1_""] call BIS_fnc_getMarkers;" \n
+                         "AAS_prio1Targets = [];" \n
+                         "{" \n
+                         "	_aaObjects = nearestObjects [markerpos _x, [""O_Radar_System_02_F"", ""O_SAM_System_04_F""], 100];" \n
+                         "	AAS_prio1Targets append _aaObjects;" \n
+                         "} foreach _prio1Mrks;" \n
+                         "" \n
+                         "_prio2Mrks = [""marker_prio2_""] call BIS_fnc_getMarkers;" \n
+                         "AAS_prio2Targets = [];" \n
+                         "{" \n
+                         "	_airObjects = nearestObjects [markerpos _x, [""I_Plane_Fighter_04_F"", ""O_Plane_Fighter_02_F""], 250];" \n
+                         "	AAS_prio2Targets append _airObjects;" \n
+                         "} foreach _prio2Mrks;" \n
+                         "" \n
+                         "_prio3Types = [""Land_TTowerBig_1_F"", ""Land_TTowerBig_2_F"", ""Land_Radar_F""];" \n
+                         "_prio3Mrks = [""marker_prio3_""] call BIS_fnc_getMarkers;" \n
+                         "AAS_prio3Targets = [];" \n
+                         "{" \n
+                         "	_building = nearestObjects [markerpos _x, _prio3Types, 50, true] select 0;" \n
+                         "	AAS_prio3Targets pushBack _building;" \n
+                         "} foreach _prio3Mrks; " \n
+                         "" \n
+                         "_prio4Mrks = [""marker_prio4_""] call BIS_fnc_getMarkers;" \n
+                         "AAS_prio4Targets = [];" \n
+                         "{" \n
+                         "	_building = nearestBuilding markerpos _x;" \n
+                         "	AAS_prio4Targets pushBack _building;" \n
+                         "} foreach _prio4Mrks;" \n
+                         "" \n
+                         "[player, 'task_1', """", objNull, 'ASSIGNED', 1, false, 'destroy'] call BIS_fnc_taskCreate;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "end">*/
+                                class end
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="chat";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getvariable [""AAS_endMission"",false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "chat">*/
+                class chat
+                {
+                        name = "chat";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"_finalEnemyCount = (east countSide allUnits) + (independent countSide allUnits);" \n
+                         "_enemiesKilled = _initialEnemyCount - _finalEnemyCount;" \n
+                         "_aaDestroyed = {!(alive _x)} count AAS_prio1Targets;" \n
+                         "_airDestroyed = {!(alive _x)} count AAS_prio2Targets;" \n
+                         "_infrastructureDestroyed = {!(alive _x)} count AAS_prio3Targets;" \n
+                         "_hqDestroyed = {!(alive _x)} count AAS_prio4Targets;" \n
+                         "" \n
+                         "AAS_debriefText = format [" \n
+                         "	""Priority 1 Targets: %1/%2 destroyed." \n
+                         "	<br/>Priority 2 Targets: %3/%4 destroyed." \n
+                         "	<br/>Priority 3 Targets: %5/%6 destroyed." \n
+                         "	<br/>Priority 4 Targets: %7/%8 destroyed." \n
+                         "	<br/>Enemy casualties: %9.""," \n
+                         "	_aaDestroyed,count AAS_prio1Targets," \n
+                         "	_airDestroyed,count AAS_prio2Targets," \n
+                         "	_infrastructureDestroyed,count AAS_prio3Targets," \n
+                         "	_hqDestroyed,count AAS_prio4Targets," \n
+                         "	_enemiesKilled" \n
+                         "];" \n
+                         "" \n
+                         "_chat = [] spawn {" \n
+                         "	player sideChat format [""%1, this is %2. Firing mission complete. Over."",groupID group b_hq, groupId group player];" \n
+                         "	sleep 5;" \n
+                         "	b_hq sideChat format [""Copy %2. Standby."",groupID group b_hq, groupId group player];" \n
+                         "	sleep 3;" \n
+                         "	b_hq sideChat format [""All units, this is %1. Commencing stage 2, I repeat, commencing stage 2."",groupID group b_hq];" \n
+                         "	sleep 5;" \n
+                         "	leader B_subGroup sideChat format [""%1 copies, diving."",groupID B_subGroup];" \n
+                         "	sleep 5;" \n
+                         "	leader B_jetGroup_1 sideChat format [""%1 copies, moving in."",groupID B_jetGroup_1];" \n
+                         "	sleep 5;" \n
+                         "	leader B_jetGroup sideChat format [""%1 copies, bringin' the rain."",groupID B_jetGroup];" \n
+                         "	sleep 5;" \n
+                         "	leader B_heliGroup sideChat format [""%1 copies, starting engines."",groupID B_heliGroup];" \n
+                         "	sleep 5;" \n
+                         "};" \n
+                         "" \n
+                         "[""task_1"", ""SUCCEEDED"", true] call BIS_fnc_taskSetState;" \n
+                         "[player, 'task_2', """", getPosASL E_enjoyShow, 'ASSIGNED', 2, false, 'move'] call BIS_fnc_taskCreate;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "chatted">*/
+                                class chatted
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="jets_fly";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"scriptdone _chat"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "terminate">*/
+                class terminate
+                {
+                        name = "terminate";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "jets_fly">*/
+                class jets_fly
+                {
+                        name = "jets_fly";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"(units B_jetGroup + units B_jetGroup_1) apply {" \n
+                         "	_vehicle = vehicle _x;" \n
+                         "	_vehicle enableSimulation true;" \n
+                         "	_vehicle hideObject false;" \n
+                         "	_vel = velocity _vehicle;" \n
+                         "	_dir = direction _vehicle;" \n
+                         "	_speed = 800;" \n
+                         "	_vehicle setVelocity [" \n
+                         "		(_vel select 0) + (sin _dir * _speed), " \n
+                         "		(_vel select 1) + (cos _dir * _speed), " \n
+                         "		(_vel select 2)" \n
+                         "	];" \n
+                         "};" \n
+                         "" \n
+                         "missionNamespace setvariable [""AAS_startMove"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "jets_passed">*/
+                                class jets_passed
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((markerpos ""marker_11"")#1)+2000 < (getpos leader B_jetGroup)#1" \n
+                                         "OR ({alive _x} count units B_jetGroup == 0)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "end">*/
+                class end
+                {
+                        name = "end";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"[""task_2"", ""SUCCEEDED"", true] call BIS_fnc_taskSetState;" \n
+                         "[""end1"",true,3] call BIS_fnc_endMission;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Start";
+        finalStates[] =
+        {
+                "terminate",
+                "end",
+        };
+};
+/*%FSM</COMPILE>*/

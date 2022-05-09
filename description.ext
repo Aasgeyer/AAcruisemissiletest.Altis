@@ -1,0 +1,188 @@
+
+class CfgFunctions
+{
+	class AAS
+	{
+		class cruise
+		{
+			class CommMenu {};
+			class livefeed {};
+			class livefeed2 {ext=".fsm";};
+			class screens {};
+		};
+		class presentation {
+			class briefing {};
+			class handbook {};
+			class reloadVLS {ext=".fsm";};
+		};
+	};
+};
+
+class CfgCommunicationMenu
+{
+	class cruiseMark
+	{
+		text = "Cruise Missile Targeting";		// Text displayed in the menu and in a notification
+		submenu = "#USER:MENU_CRUISECOMMS";					// Submenu opened upon activation (expression is ignored when submenu is not empty.)
+		expression = "";//"_this call AAS_fnc_commMenu;";	// Code executed upon activation
+		icon = "\a3\ui_f\data\IGUI\RscCustomInfo\Sensors\Targets\LaserTarget_ca.paa";//"\a3\ui_f\data\GUI\Cfg\Hints\missile_terrain_ca.paa";//"\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa";				// Icon displayed permanently next to the command menu
+		cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";				// Custom cursor displayed when the item is selected
+		enable = "1";					// Simple expression condition for enabling the item
+		removeAfterExpressionCall = 0;	// 1 to remove the item after calling
+	};
+
+	class endMission
+	{
+		text = "End Firing Mission";		// Text displayed in the menu and in a notification
+		submenu = "";					// Submenu opened upon activation (expression is ignored when submenu is not empty.)
+		expression = "[] spawn {AAS_endMission = ['Are you sure you want to end the mission?', 'Confirm End Mission', true, true] call BIS_fnc_guiMessage;};";	// Code executed upon activation
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";				// Icon displayed permanently next to the command menu
+		cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";				// Custom cursor displayed when the item is selected
+		enable = "!(missionNamespace getvariable ['AAS_endMission',false])";					// Simple expression condition for enabling the item
+		removeAfterExpressionCall = 0;	// 1 to remove the item after calling
+	};
+};
+
+class CfgDebriefingSections
+{
+	class PrioTargets
+	{
+		title = "Damage Assesment";
+		variable = "AAS_debriefText";
+	};
+};
+
+class CfgTaskDescriptions
+{
+	class task_1
+	{
+		title		= "Destroy all targets";
+		description	= "Destroy all priority targets marked on the map!";
+		marker		= "";
+	};
+	class task_2
+	{
+		title		= "Enjoy the show";
+		description	= "The invasion begins...";
+		marker		= "";
+	};
+};
+
+class CfgSFX
+{
+	class ship_1
+	{
+		//{soundPath, soundVolume, soundPitch, maxDistance, probability, minDelay, midDelay, maxDelay}
+		sound0[] = {"@a3\Sounds_F_EPC\Device\device_assembled_loop.wss", db-5, 0.8, 2000, 1.0, 0, 0, 0};  // path to addon sound
+		sounds[] = {sound0};
+		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+	};
+	class ship_2
+	{
+		sound0[] = {"@a3\Sounds_F_EPC\Device\device_disassembled_loop.wss", 4, 0.8, 2000, 1.0, 0, 0, 0};
+		sounds[] = {sound0};
+		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+	};
+	class ship_3
+	{
+		sound0[] = {"@A3\Missions_F_Oldman\Data\sound\Energy_Hum\Energy_Hum_Loop.wss", 3, 0.8, 1000, 1.0, 0, 0, 0};
+		sounds[] = {sound0};
+		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+	};
+	class ship_4
+	{
+		sound0[] = {"@A3\Sounds_F\environment\structures\windturbine\windturbine", 0.5, 0.8, 2500, 1.0, 0, 0, 0};
+		sounds[] = {sound0};
+		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+	};
+	class radio_1
+	{
+		sound0[] = {"@a3\sounds_f\sfx\radio\ambient_radio30", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound1[] = {"@a3\sounds_f\sfx\radio\ambient_radio1", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound2[] = {"@a3\sounds_f\sfx\radio\ambient_radio2", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound3[] = {"@a3\sounds_f\sfx\radio\ambient_radio3", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound4[] = {"@a3\sounds_f\sfx\radio\ambient_radio4", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound5[] = {"@a3\sounds_f\sfx\radio\ambient_radio5", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound6[] = {"@a3\sounds_f\sfx\radio\ambient_radio6", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound7[] = {"@a3\sounds_f\sfx\radio\ambient_radio7", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound8[] = {"@a3\sounds_f\sfx\radio\ambient_radio8", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound9[] = {"@a3\sounds_f\sfx\radio\ambient_radio9", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sounds[] = {sound0,sound1,sound2,sound3,sound4,sound5,sound6,sound7,sound8,sound9};
+		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+	};
+	class radio_2
+	{
+		sound0[] = {"@a3\sounds_f\sfx\radio\ambient_radio10", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound1[] = {"@a3\sounds_f\sfx\radio\ambient_radio11", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound2[] = {"@a3\sounds_f\sfx\radio\ambient_radio12", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound3[] = {"@a3\sounds_f\sfx\radio\ambient_radio13", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound4[] = {"@a3\sounds_f\sfx\radio\ambient_radio14", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound5[] = {"@a3\sounds_f\sfx\radio\ambient_radio15", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound6[] = {"@a3\sounds_f\sfx\radio\ambient_radio16", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound7[] = {"@a3\sounds_f\sfx\radio\ambient_radio17", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound8[] = {"@a3\sounds_f\sfx\radio\ambient_radio18", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound9[] = {"@a3\sounds_f\sfx\radio\ambient_radio19", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sounds[] = {sound0,sound1,sound2,sound3,sound4,sound5,sound6,sound7,sound8,sound9};
+		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+	};
+	class radio_3
+	{
+		sound0[] = {"@a3\sounds_f\sfx\radio\ambient_radio20", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound1[] = {"@a3\sounds_f\sfx\radio\ambient_radio21", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound2[] = {"@a3\sounds_f\sfx\radio\ambient_radio22", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound3[] = {"@a3\sounds_f\sfx\radio\ambient_radio23", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound4[] = {"@a3\sounds_f\sfx\radio\ambient_radio24", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound5[] = {"@a3\sounds_f\sfx\radio\ambient_radio25", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound6[] = {"@a3\sounds_f\sfx\radio\ambient_radio26", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound7[] = {"@a3\sounds_f\sfx\radio\ambient_radio27", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound8[] = {"@a3\sounds_f\sfx\radio\ambient_radio28", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sound9[] = {"@a3\sounds_f\sfx\radio\ambient_radio29", 1, 1.0, 350, 1.0, 0, 15, 45};
+		sounds[] = {sound0,sound1,sound2,sound3,sound4,sound5,sound6,sound7,sound8,sound9};
+		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+	};
+	class office_1
+	{
+		sound0[] = {"@A3\Sounds_F_Enoch\Assets\Props\Sfx_RuggedPhone_Ringing_01", 1, 1.0, 350, 1.0, 15, 35, 42};
+		sound1[] = {"@a3\Missions_F_Oldman\Data\sound\Intel_PC\1sec\Intel_PC_1sec_01.wss", 1, 1.0, 350, 1.0, 15, 35, 45};
+		sound2[] = {"@a3\Missions_F_Oldman\Data\sound\Intel_PC\1sec\Intel_PC_1sec_02.wss", 1, 1.0, 350, 1.0, 15, 25, 45};
+		sound3[] = {"a3\Missions_F_Oldman\Data\sound\Intel_PC\1sec\Intel_PC_1sec_03.wss", 1, 1.0, 350, 1.0, 15, 20, 45};
+		sounds[] = {sound0,sound1,sound2,sound3};
+		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+	};
+};
+
+class CfgVehicles
+{
+	class shipSound_1 // class name to be used with createSoundSource
+	{
+		sound = "ship_1"; // reference to CfgSFX class
+	};
+	class shipSound_2
+	{
+		sound = "ship_2";
+	};
+	class shipSound_3
+	{
+		sound = "ship_3";
+	};
+	class shipSound_4
+	{
+		sound = "ship_4";
+	};
+	class radioSound_1
+	{
+		sound = "radio_1";
+	};
+	class radioSound_2
+	{
+		sound = "radio_2";
+	};
+	class radioSound_3
+	{
+		sound = "radio_3";
+	};
+	class officeSound_1
+	{
+		sound = "office_1";
+	};
+};

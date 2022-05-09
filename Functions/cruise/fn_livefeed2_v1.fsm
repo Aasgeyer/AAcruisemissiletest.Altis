@@ -1,0 +1,531 @@
+/*%FSM<COMPILE "D:\Programme HDD\Steam HDD\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, cruiseLiveFeed">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-75.000000,-375.000000,25.000000,-325.000000,0.000000,"Start"};
+item1[] = {"_",8,218,-75.000000,-250.000000,25.000000,-200.000000,0.000000,""};
+item2[] = {"__",2,250,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"1"};
+item3[] = {"in_use",4,218,-75.000000,50.000000,25.000000,100.000000,0.000000,"in use"};
+item4[] = {"",7,210,146.000000,471.000000,154.000000,479.000000,0.000000,""};
+item5[] = {"",7,210,146.000000,196.000000,154.000000,204.000000,0.000000,""};
+item6[] = {"___1",2,250,-75.000000,175.000000,25.000000,225.000000,0.000000,"2"};
+item7[] = {"in_use",4,218,-75.000000,325.000000,25.000000,375.000000,0.000000,"in use"};
+item8[] = {"",7,210,146.000000,-79.000000,154.000000,-71.000000,0.000000,""};
+item9[] = {"_",8,218,100.000000,975.000000,200.000000,1025.000000,0.000000,""};
+item10[] = {"update",2,250,100.000000,1075.000000,200.000000,1125.000000,0.000000,"update"};
+item11[] = {"slept",4,218,250.000000,1025.000000,350.000000,1075.000000,0.000000,"slept"};
+item12[] = {"___2",2,250,400.000000,1075.000000,500.000000,1125.000000,0.000000,"/"};
+item13[] = {"__IsServer",4,218,100.000000,-375.000000,200.000000,-325.000000,1.000000,"!IsServer"};
+item14[] = {"terminate",1,250,275.000000,-375.000000,375.000000,-325.000000,0.000000,"terminate"};
+item15[] = {"_",8,218,250.000000,1125.000000,350.000000,1175.000000,0.000000,""};
+item16[] = {"missile_going_up",4,218,250.000000,1325.000000,350.000000,1375.000000,0.000000,"missile going up"};
+item17[] = {"___3",2,250,-75.000000,450.000000,25.000000,500.000000,0.000000,"3"};
+item18[] = {"in_use",4,218,-75.000000,600.000000,25.000000,650.000000,0.000000,"in use"};
+item19[] = {"___4",2,250,-75.000000,725.000000,25.000000,775.000000,0.000000,"4"};
+item20[] = {"in_use",4,218,-75.000000,850.000000,25.000000,900.000000,0.000000,"in use"};
+item21[] = {"unused",4,218,100.000000,725.000000,200.000000,775.000000,0.000000,"unused"};
+item22[] = {"use",2,4346,100.000000,850.000000,200.000000,900.000000,0.000000,"use"};
+item23[] = {"missile_null_fee",4,218,400.000000,1450.000000,500.000000,1500.000000,1.000000,"missile null" \n "feed"};
+item24[] = {"reset_cam",1,250,400.000000,1575.000000,500.000000,1625.000000,0.000000,"reset cam"};
+item25[] = {"terminate_no_fee",1,250,100.000000,1575.000000,200.000000,1625.000000,0.000000,"terminate" \n "no feed"};
+item26[] = {"",7,210,-29.000000,1096.000000,-21.000000,1104.000000,0.000000,""};
+item27[] = {"missile_null",4,218,100.000000,1450.000000,200.000000,1500.000000,0.000000,"missile null"};
+item28[] = {"destroy_missile",3,250,250.000000,1450.000000,350.000000,1500.000000,0.000000,"destroy missile"};
+link0[] = {0,1};
+link1[] = {0,13};
+link2[] = {1,2};
+link3[] = {2,3};
+link4[] = {2,8};
+link5[] = {3,6};
+link6[] = {4,21};
+link7[] = {5,4};
+link8[] = {6,5};
+link9[] = {6,7};
+link10[] = {7,17};
+link11[] = {8,5};
+link12[] = {9,10};
+link13[] = {10,11};
+link14[] = {10,16};
+link15[] = {10,23};
+link16[] = {10,27};
+link17[] = {11,12};
+link18[] = {12,15};
+link19[] = {12,16};
+link20[] = {12,23};
+link21[] = {12,27};
+link22[] = {13,14};
+link23[] = {15,10};
+link24[] = {16,28};
+link25[] = {17,4};
+link26[] = {17,18};
+link27[] = {18,19};
+link28[] = {19,20};
+link29[] = {19,21};
+link30[] = {20,26};
+link31[] = {21,22};
+link32[] = {22,9};
+link33[] = {23,24};
+link34[] = {26,10};
+link35[] = {27,25};
+link36[] = {28,23};
+link37[] = {28,27};
+globals[] = {0.000000,0,0,0,0,640,480,1,107,6316128,1,-466.384460,881.038147,1286.685547,200.886108,1097,884,1};
+window[] = {2,-1,-1,-1,-1,785,26,1466,26,3,1115};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "cruiseLiveFeed";
+        class States
+        {
+                /*%FSM<STATE "Start">*/
+                class Start
+                {
+                        name = "Start";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"params [""_unit"", ""_weapon"", ""_muzzle"", ""_mode"", ""_ammo"", ""_magazine"", ""_missile"", ""_gunner""];" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "__IsServer">*/
+                                class __IsServer
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="terminate";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!IsServer"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__">*/
+                class __
+                {
+                        name = "__";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"_camT = createVehicle [""Sign_Sphere10cm_F"",[0,0,0],[],0,""CAN_COLLIDE""];" \n
+                         "_camT hideObject true;" \n
+                         "_camT attachTo [_missile,[0,6,0]];" \n
+                         "" \n
+                         "_unit spawn {" \n
+                         "	for ""_i"" from 1 to 3 do {" \n
+                         "		playSound3D [""A3\Sounds_F\sfx\alarm.wss"", _this, false, getposASL _this, 3, 0.75,500];" \n
+                         "		sleep 1.5;" \n
+                         "	};" \n
+                         "};" \n
+                         "" \n
+                         "_camIndex = 1;" \n
+                         "_globalVar = format [""AAS_rtt%1used"",_camIndex];" \n
+                         "_cam = missionNamespace getvariable [format [""AAS_cam%1"",_camIndex],objNull];" \n
+                         "" \n
+                         "_startTime = time;" \n
+                         "_mrk_cruise = createMarker [format [""mrk_cruise_%1"",random 1000], getpos _missile];" \n
+                         "_mrk_cruise setmarkerTypeLocal ""mil_triangle"";" \n
+                         "_mrk_cruise setmarkerColorLocal ""ColorOrange"";" \n
+                         "_mrk_cruise setmarkerTextLocal format [""t+ %1"",round(_startTime)];" \n
+                         "_mrk_cruise setmarkerSize [0.25,0.5];" \n
+                         "_mrk_cruise setMarkerDir getdir _missile;" \n
+                         "" \n
+                         "_missileT = missileTarget _missile;" \n
+                         "_missileTPos = missileTargetPos _missile;" \n
+                         "player sidechat ""VLS Firing!"";" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "unused">*/
+                                class unused
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="use";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(missionnamespace getvariable [_globalVar, false])"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "in_use">*/
+                                class in_use
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="___1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionnamespace getvariable [_globalVar, false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___1">*/
+                class ___1
+                {
+                        name = "___1";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_camIndex = _camIndex+1;" \n
+                         "_globalVar = format [""AAS_rtt%1used"",_camIndex];" \n
+                         "_cam = missionNamespace getvariable [format [""AAS_cam%1"",_camIndex],objNull];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "unused">*/
+                                class unused
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="use";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(missionnamespace getvariable [_globalVar, false])"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "in_use">*/
+                                class in_use
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="___3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionnamespace getvariable [_globalVar, false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "update">*/
+                class update
+                {
+                        name = "update";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"_t = time;" \n
+                         "_mrk_cruise setmarkerposLocal getpos _missile;" \n
+                         "_t_p = round(time-_startTime);" \n
+                         "_ASL = round((getposASL _missile select 2));" \n
+                         "_s = _missile distance _missileT;" \n
+                         "_v = (speed _missile)/3.6;" \n
+                         "_t_m = round(_s/_v);" \n
+                         "_grid = mapgridposition missileTarget _missile;" \n
+                         "_mrk_cruise setmarkerTextLocal format [""grid %1 | t+ %2 | t- %3 | ASL %4"", _grid, _t_p, _t_m, _ASL];" \n
+                         "_mrk_cruise setmarkerDir getdir _missile;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 23;
+                                        priority = 1.000000;
+                                        to="reset_cam";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _camIndex < 5"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_going_up">*/
+                                class missile_going_up
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="destroy_missile";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"getpos _missile select 2 > 1000" \n
+                                         "OR (IsNull missileTarget _missile && time > _startTime+10)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="terminate_no_fee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "slept">*/
+                                class slept
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="___2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_t+0.25 <= time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___2">*/
+                class ___2
+                {
+                        name = "___2";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 23;
+                                        priority = 1.000000;
+                                        to="reset_cam";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _camIndex < 5"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_going_up">*/
+                                class missile_going_up
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="destroy_missile";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"getpos _missile select 2 > 1000" \n
+                                         "OR (IsNull missileTarget _missile && time > _startTime+10)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="terminate_no_fee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="update";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "terminate">*/
+                class terminate
+                {
+                        name = "terminate";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___3">*/
+                class ___3
+                {
+                        name = "___3";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/"_camIndex = _camIndex+1;" \n
+                         "_globalVar = format [""AAS_rtt%1used"",_camIndex];" \n
+                         "_cam = missionNamespace getvariable [format [""AAS_cam%1"",_camIndex],objNull];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "unused">*/
+                                class unused
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="use";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(missionnamespace getvariable [_globalVar, false])"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "in_use">*/
+                                class in_use
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="___4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionnamespace getvariable [_globalVar, false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___4">*/
+                class ___4
+                {
+                        name = "___4";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"_camIndex = _camIndex+1;" \n
+                         "_globalVar = format [""AAS_rtt%1used"",_camIndex];" \n
+                         "_cam = missionNamespace getvariable [format [""AAS_cam%1"",_camIndex],objNull];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "unused">*/
+                                class unused
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="use";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(missionnamespace getvariable [_globalVar, false])"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "in_use">*/
+                                class in_use
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="update";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionnamespace getvariable [_globalVar, false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "use">*/
+                class use
+                {
+                        name = "use";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"If (isNull _cam) then {" \n
+                         "	_piprender = format [""piprenderscreen_%1"",_camIndex];" \n
+                         "	_cam = [_piprender, [[_missile, [0,4,0.0]], _camT]] call BIS_fnc_PIP;" \n
+                         "	missionNamespace setvariable [format [""AAS_cam%1"",_camIndex],_cam];" \n
+                         "	_piprender setPiPEffect [2];// [3,1,1,0.4,0,[0,0,0,0],[1,1,1,0],[1,1,1,1]];//[2];" \n
+                         "} else {" \n
+                         "	_cam attachto [_missile, [0,4,0.0]];" \n
+                         "	_cam camPrepareTarget _camT;" \n
+                         "	_cam camCommitPrepared 0;" \n
+                         "};" \n
+                         "" \n
+                         "missionnamespace setvariable [_globalVar, true];" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="update";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reset_cam">*/
+                class reset_cam
+                {
+                        name = "reset_cam";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"missionnamespace setvariable [_globalVar, false];" \n
+                         "_cam attachTo [_unit, [0,0,2]];" \n
+                         "_cam camPrepareTarget (_unit modelToWorld [0,5,2]);" \n
+                         "_cam camCommitPrepared 0;" \n
+                         "deleteVehicle _camT;" \n
+                         "deletemarker _mrk_cruise;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "terminate_no_fee">*/
+                class terminate_no_fee
+                {
+                        name = "terminate_no_fee";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"deleteVehicle _camT;" \n
+                         "deletemarker _mrk_cruise;" \n
+                         "missionnamespace setvariable [_globalVar, nil];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "destroy_missile">*/
+                class destroy_missile
+                {
+                        name = "destroy_missile";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/"deleteVehicle _missile;" \n
+                         "_t = time+999;" \n
+                         "player sidechat ""Cruise missile self destruct, no target aquisition"";" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missile_null_fee">*/
+                                class missile_null_fee
+                                {
+                                        itemno = 23;
+                                        priority = 1.000000;
+                                        to="reset_cam";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile && _camIndex < 5"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "missile_null">*/
+                                class missile_null
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="terminate_no_fee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _missile"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Start";
+        finalStates[] =
+        {
+                "terminate",
+                "reset_cam",
+                "terminate_no_fee",
+        };
+};
+/*%FSM</COMPILE>*/
